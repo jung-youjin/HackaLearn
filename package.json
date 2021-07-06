@@ -1,0 +1,23 @@
+{
+  "name": "HackaLearn",
+  "version": "1.0.0",
+  "description": "HackaLearnx Korea 2021 행사 리포지토리",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jung-youjin/HackaLearn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jung-youjin/HackaLearn/issues"
+  },
+  "homepage": "https://github.com/jung-youjin/HackaLearn#readme",
+  "dependencies": {
+    "mjml": "^4.10.1"
+  }
+}
