@@ -45,6 +45,7 @@ jobs:
     steps:
       - uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           reviewers: "jung-youjin"
           # reviewers: "devrel-kr"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
