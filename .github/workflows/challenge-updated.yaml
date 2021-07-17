@@ -21,17 +21,17 @@ jobs:
       with:
         add-labels: review-required
 
-    commenting:
-      name: 'Add a comment on update'
-      runs-on: ubuntu-latest
-      steps:
-        - uses: bubkoo/auto-comment@v1.0.7
-          with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            pullRequestEditedReactions: 'rocket, +1'
-            pullRequestEdited: >
-              👋🏼 @{{ author }} 님!
-              <br>
-              챌린지 완료 PR를 업데이트해 주셔서 감사합니다! 🎉 참가자님의 지치지 않는 열정을 응원해요! 💪🏼
-              <br><br>
-              🔹 From. HackaLearn 운영진 일동 🔹
+  commenting:
+    name: 'Add a comment on update'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: bubkoo/auto-comment@v1.0.7
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pullRequestEditedReactions: 'rocket, +1'
+          pullRequestEdited: >
+            👋🏼 @{{ author }} 님!
+            <br>
+            챌린지 완료 PR를 업데이트해 주셔서 감사합니다! 🎉 참가자님의 지치지 않는 열정을 응원해요! 💪🏼
+            <br><br>
+            🔹 From. HackaLearn 운영진 일동 🔹
