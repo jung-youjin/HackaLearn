@@ -38,11 +38,12 @@ jobs:
             <br><br>
             🔹 From. HackaLearn 운영진 일동 🔹
 
-   reviewer-assigning:
-     name: 'Assign a reviewer on submission: deverl-kr/hackalearn'
-     runs-on: ubuntu-latest
-     steps:
-       - uses: kentaro-m/auto-assign-action@v1.2.0
-         with:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           configuration-path: ".github/auto-assign.yml" # Only needed if you use something other than .github/auto_assign.yml
+  reviewer-assigning:
+    name: 'Assign a reviewer on submission: deverl-kr/hackalearn'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: "jung-youjin"
+          # reviewers: "devrel-kr"
