@@ -21,6 +21,7 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         configuration-path: '.github/labeler.yml'
+        sync-labels: true
 
   commenting:
     name: 'Add a comment on update'
