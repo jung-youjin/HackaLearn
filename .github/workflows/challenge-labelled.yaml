@@ -3,6 +3,7 @@ name: On Challenge Labelled
 on:
   pull_request:
     types:
+    - edited
     - labeled
     - unlabeled
 
