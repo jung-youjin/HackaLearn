@@ -1,5 +1,2 @@
 review-required:
 - 'teams/**/*.md'
-
-review-completed:
-- 'teams/**/*.md'
