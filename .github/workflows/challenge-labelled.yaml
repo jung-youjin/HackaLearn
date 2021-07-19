@@ -17,6 +17,7 @@ jobs:
       uses: dessant/label-actions@v2
       with:
         process-only: prs
+        config-path: '.github/label-actions.yml'
   
   slash-commanding:
     name: 'Update label to review-completed when slash command comment used'
