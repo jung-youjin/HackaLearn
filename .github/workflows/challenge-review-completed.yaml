@@ -1,0 +1,22 @@
+name: On Challenge review-completed commented
+
+on:
+  pull_request:
+    types:
+    - [labeled] #ready_for_review]
+
+jobs:
+  slash-commanding:
+    name: 'Update label to review-completed when slash command comment used'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: peter-evans/create-or-update-comment@v1
+      with:
+      - token: ${{ secrets.PAT }}
+      - reaction-token: ${{ secrets.PAT }}
+      - commands: |
+          aswasignoff
+          ghasignoff
+          socialsignoff
+          reposignoff
+          retrosignoff
