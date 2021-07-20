@@ -1,10 +1,11 @@
 name: On Challenge review-completed commented
 
 on:
-  pull_request_review_comment:
-    types: [created, deleted]
-    paths:
-    - 'teams/**/*.md'
+  # pull_request_review_comment:
+  #   types: 
+  #   - [created, deleted]
+  #   paths:
+  #   - 'teams/**/*.md'
   pull_request:
     types:
     - [labeled] #ready_for_review]
