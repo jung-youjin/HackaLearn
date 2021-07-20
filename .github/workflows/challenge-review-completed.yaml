@@ -1,11 +1,35 @@
 name: On Challenge review-completed commented
 
 on:
+  pull_request_review_comment:
+    types: [created, deleted]
+    paths:
+    - 'teams/**/*.md'
   pull_request:
     types:
     - [labeled] #ready_for_review]
+    paths:
+    - 'teams/**/*.md'
 
 jobs:
+  check-comments:
+    name: 'Check comments for /command'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: aswasignoff
+          reaction: "true"
+          reaction-type: "eyes"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command'
+        run: |
+          "The command was '${{ steps.command.outputs.command-name }}' with arguments '${{ steps.command.outputs.command-arguments }}'"
+          
   slash-commanding:
     name: 'Update label to review-completed when slash command comment used'
     runs-on: ubuntu-latest
