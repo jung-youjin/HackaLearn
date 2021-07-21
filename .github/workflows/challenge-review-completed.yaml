@@ -31,17 +31,17 @@ jobs:
         run: |
           "The command was '${{ steps.command.outputs.command-name }}' with arguments '${{ steps.command.outputs.command-arguments }}'"
           
-  slash-commanding:
-    name: 'Update label to review-completed when slash command comment used'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: peter-evans/create-or-update-comment@v1
-      with:
-      - token: ${{ secrets.PAT }}
-      - reaction-token: ${{ secrets.PAT }}
-      - commands: |
-          aswasignoff
-          ghasignoff
-          socialsignoff
-          reposignoff
-          retrosignoff
+ # slash-commanding:
+ #   name: 'Update label to review-completed when slash command comment used'
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #   - uses: peter-evans/create-or-update-comment@v1
+ #     with:
+ #     - token: ${{ secrets.PAT }}
+ #     - reaction-token: ${{ secrets.PAT }}
+ #     - commands: |
+ #         aswasignoff
+ #         ghasignoff
+ #         socialsignoff
+ #         reposignoff
+ #         retrosignoff
