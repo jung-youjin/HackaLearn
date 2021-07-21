@@ -30,7 +30,7 @@ jobs:
           permission-level: admin
       - name: 'Act on command'
         run: |
-          "The command was '${{ steps.command.outputs.command-name }}' with arguments '${{ steps.command.outputs.command-arguments }}'"
+          "The command was '${{ steps.command.outputs.command-name }}' by '${{ github.event.issue_comment.user.login }}'"
           
  # slash-commanding:
  #   name: 'Update label to review-completed when slash command comment used'
