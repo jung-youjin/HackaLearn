@@ -31,20 +31,20 @@ jobs:
               repo-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
                 console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
-              run: |
-                echo "The command was '${{ steps.command.outputs.aswasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
-                const request = {
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: context.issue.number
-                }
-                core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
-                try {
-                  const result = await github.pulls.get(request)
-                  return result.data
-                } catch (err) {
-                  core.setFailed(`Request failed with error ${err}`)
-                }
+            run: |
+              echo "The command was '${{ steps.command.outputs.aswasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+              const request = {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number
+              }
+              core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
+              try {
+                const result = await github.pulls.get(request)
+                return result.data
+              } catch (err) {
+                core.setFailed(`Request failed with error ${err}`)
+              }
 
       slash-ghasignoff:
         runs-on: ubuntu-latest
