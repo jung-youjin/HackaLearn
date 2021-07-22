@@ -9,32 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     name: Check command
     steps:
-    - check-aswasignoff:
-        name: Check comments for /command aswasignoff
-        runs-on: ubuntu-latest
-        steps:
-          - name: Check for command type
-            id: command
-            uses: xt0rted/slash-command-action@v1
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              command: aswasignoff
-              reaction: "true"
-              allow-edits: "false"
-              permission-level: admin
+    - name: Check comments for /command aswasignoff
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check for command type
+          id: command
+          uses: xt0rted/slash-command-action@v1
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: aswasignoff
+            reaction: "true"
+            allow-edits: "false"
+            permission-level: admin
               
-          - name: 'Act on command aswasignoff'
-            uses: actions/github-script@v3
-            if: |
-              steps.command.outputs.aswasignoff =='aswasignoff'
-            with: 
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              reaction-type: "hooray"
-              script: |
-                console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
-
-    - check-ghasignoff:
-        name: Check comments for /command ghasignoff
+        - name: 'Act on command aswasignoff'
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.aswasignoff =='aswasignoff'
+          with: 
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            reaction-type: "hooray"
+            script: |
+              console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
+        
+      - name: Check comments for /command ghasignoff
         runs-on: ubuntu-latest
         steps:
           - name: Check for command type
@@ -54,8 +52,7 @@ jobs:
             run: |
               echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
 
-    - check-socialsignoff:
-        name: Check comments for /command socialsignoff
+      - name: Check comments for /command socialsignoff
         runs-on: ubuntu-latest
         steps:
           - name: Check for command type
@@ -75,8 +72,7 @@ jobs:
             run: |
               echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
 
-    - check-reposignoff:
-        name: Check comments for /command reposignoff
+      - name: Check comments for /command reposignoff
         runs-on: ubuntu-latest
         steps:
           - name: Check for command type
@@ -96,8 +92,7 @@ jobs:
             run: |
               echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
 
-    - check-retrosignoff:
-        name: Check comments for /command retrosignoff
+      - name: Check comments for /command retrosignoff
         runs-on: ubuntu-latest
         steps:
           - name: Check for command type
