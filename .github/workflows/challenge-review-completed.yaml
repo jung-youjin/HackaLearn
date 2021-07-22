@@ -48,6 +48,7 @@ jobs:
               allow-edits: "false"
               permission-level: admin
           - name: Act on command ghasignoff
+            uses: actions/github-script@v3
             if: |
                 steps.command.outputs.ghasignoff =='ghasignoff'
             run: |
@@ -68,6 +69,7 @@ jobs:
               allow-edits: "false"
               permission-level: admin
           - name: Act on command socialsignoff
+            uses: actions/github-script@v3
             if: |
                 steps.command.outputs.socialsignoff =='socialsignoff'
             run: |
@@ -88,6 +90,7 @@ jobs:
               allow-edits: "false"
               permission-level: admin
           - name: Act on command reposignoff
+            uses: actions/github-script@v3
             if: |
                 steps.command.outputs.reposignoff =='reposignoff'
             run: |
@@ -108,6 +111,7 @@ jobs:
               allow-edits: "false"
               permission-level: admin
           - name: Act on command retrosignoff
+            uses: actions/github-script@v3
             if: |
                 steps.command.outputs.retrosignoff =='retrosignoff'
             run: |
