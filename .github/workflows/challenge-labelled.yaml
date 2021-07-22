@@ -2,9 +2,12 @@ name: On Challenge Labelled
 
 on:
   pull_request:
+    branches:
+    - main
     types:
     - labeled
     - unlabeled
+    - synchronize
 
 jobs:
   labelling:
@@ -13,14 +16,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Respond to label
+    - name: 'Respond to label'
       uses: dessant/label-actions@v2
       with:
         process-only: prs
         config-path: '.github/label-actions.yml'
   
+<<<<<<< HEAD
 #  slash-commanding:
 #    name: 'Update label to review-completed when slash command comment used'
 #    runs-on: ubuntu-latest
 #    steps:
 #    - uses: peter-evans/create-or-update-comment@v1
+=======
+  # slash-commanding:
+  #   name: 'Update label to review-completed when slash command comment used'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: peter-evans/create-or-update-comment@v1
+>>>>>>> 5a245709cde4dde5017242862a4ee74c3268e288
