@@ -37,7 +37,7 @@ jobs:
         with: 
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} "
+            console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
   
   check-ghasignoff:
     name: 'Check comments for /command ghasignoff'
