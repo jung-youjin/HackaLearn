@@ -29,7 +29,7 @@ jobs:
           reaction: "true"
           allow-edits: "false"
           permission-level: admin
-      - name: 'Act on command'
+      - name: 'Act on command aswasignoff'
         uses: actions/github-script@v3
         if: |
           steps.command.outputs.aswasignoff =='aswasignoff'
@@ -55,6 +55,8 @@ jobs:
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command ghasignoff'
+        if: |
+            steps.command.outputs.ghasignoff =='ghasignoff'
         run: |
           echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
  
@@ -74,6 +76,8 @@ jobs:
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command socialsignoff'
+        if: |
+            steps.command.outputs.socialsignoff =='socialsignoff'
         run: |
           echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
 
@@ -93,6 +97,8 @@ jobs:
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command reposignoff'
+        if: |
+            steps.command.outputs.reposignoff =='reposignoff'
         run: |
           echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
 
@@ -112,6 +118,8 @@ jobs:
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command retrosignoff'
+        if: |
+            steps.command.outputs.retrosignoff =='retrosignoff'
         run: |
           echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
 
