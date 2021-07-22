@@ -13,118 +13,118 @@ jobs:
       slash-aswasignoff:
         runs-on: ubuntu-latest
         steps:
-          - name: Check for command type
-            id: command
-            uses: xt0rted/slash-command-action@v1
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              command: aswasignoff
-              reaction: "true"
-              reaction-type: "hooray"
-              allow-edits: "false"
-              permission-level: admin
-          - name: 'Act on command aswasignoff'
-            uses: actions/github-script@v3
-            if: |
-              steps.command.outputs.aswasignoff =='aswasignoff'
-            with: 
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              script: |
-                console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
-            run: |
-              echo "The command was '${{ steps.command.outputs.aswasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
-              const request = {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number
-              }
-              core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
-              try {
-                const result = await github.pulls.get(request)
-                return result.data
-              } catch (err) {
-                core.setFailed(`Request failed with error ${err}`)
-              }
+        - name: Check for command type
+          id: command
+          uses: xt0rted/slash-command-action@v1
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: aswasignoff
+            reaction: "true"
+            reaction-type: "hooray"
+            allow-edits: "false"
+            permission-level: admin
+        - name: 'Act on command aswasignoff'
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.aswasignoff =='aswasignoff'
+          with: 
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            script: |
+              console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
+          run: |
+            echo "The command was '${{ steps.command.outputs.aswasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+            const request = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            }
+            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
+            try {
+              const result = await github.pulls.get(request)
+              return result.data
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
 
       slash-ghasignoff:
         runs-on: ubuntu-latest
         steps:
-          - name: Check for command type
-            id: command
-            uses: xt0rted/slash-command-action@v1
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              command: ghasignoff
-              reaction: "true"
-              reaction-type: "+1"
-              allow-edits: "false"
-              permission-level: admin
-          - name: Act on command ghasignoff
-            uses: actions/github-script@v3
-            if: |
-                steps.command.outputs.ghasignoff =='ghasignoff'
-            run: |
-              echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+        - name: Check for command type
+          id: command
+          uses: xt0rted/slash-command-action@v1
+          with:
+           repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: ghasignoff
+            reaction: "true"
+            reaction-type: "+1"
+            allow-edits: "false"
+            permission-level: admin
+        - name: Act on command ghasignoff
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.ghasignoff =='ghasignoff'
+          run: |
+            echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
 
       slash-socialsignoff:
         runs-on: ubuntu-latest
         steps:
-          - name: Check for command type
-            id: command
-            uses: xt0rted/slash-command-action@v1
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              command: socialsignoff
-              reaction: "true"
-              reaction-type: "heart"
-              allow-edits: "false"
-              permission-level: admin
-          - name: Act on command socialsignoff
-            uses: actions/github-script@v3
-            if: |
-                steps.command.outputs.socialsignoff =='socialsignoff'
-            run: |
-              echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
+        - name: Check for command type
+          id: command
+          uses: xt0rted/slash-command-action@v1
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: socialsignoff
+            reaction: "true"
+            reaction-type: "heart"
+            allow-edits: "false"
+            permission-level: admin
+        - name: Act on command socialsignoff
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.socialsignoff =='socialsignoff'
+          run: |
+            echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
 
       slash-reposignoff:
         runs-on: ubuntu-latest
         steps:
-          - name: Check for command type
-            id: command
-            uses: xt0rted/slash-command-action@v1
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              command: reposignoff
-              reaction: "true"
-              reaction-type: "eyes"
-              allow-edits: "false"
-              permission-level: admin
-          - name: Act on command reposignoff
-            uses: actions/github-script@v3
-            if: |
-                steps.command.outputs.reposignoff =='reposignoff'
-            run: |
-              echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
+        - name: Check for command type
+          id: command
+          uses: xt0rted/slash-command-action@v1
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: reposignoff
+            reaction: "true"
+            reaction-type: "eyes"
+            allow-edits: "false"
+            permission-level: admin
+        - name: Act on command reposignoff
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.reposignoff =='reposignoff'
+          run: |
+            echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
 
       slash-retrosignoff:
         runs-on: ubuntu-latest
         steps:
-          - name: Check for command type
-            uses: xt0rted/slash-command-action@v1
-            id: command
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
-              command: retrosignoff
-              reaction: "true"
-              reaction-type: "rocket"
-              allow-edits: "false"
-              permission-level: admin
-          - name: Act on command retrosignoff
-            uses: actions/github-script@v3
-            if: |
-                steps.command.outputs.retrosignoff =='retrosignoff'
-            run: |
-              echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
+        - name: Check for command type
+          uses: xt0rted/slash-command-action@v1
+          id: command
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: retrosignoff
+            reaction: "true"
+            reaction-type: "rocket"
+            allow-edits: "false"
+            permission-level: admin
+        - name: Act on command retrosignoff
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.retrosignoff =='retrosignoff'
+          run: |
+            echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
 
  # slash-commanding:
  #   name: 'Update label to review-completed when slash command comment used'
