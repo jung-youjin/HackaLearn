@@ -30,15 +30,15 @@ jobs:
           allow-edits: "false"
           permission-level: admin
           
-      - name: 'Act on command'
-        uses: actions/github-script@v3
-        if: |
-          steps.command.outputs.command-name =='aswasignoff'
-        with: 
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          reaction-type: "eyes"
-          script: |
-            console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
+        - name: 'Act on command'
+          uses: actions/github-script@v3
+          if: |
+            steps.command.outputs.command-name =='aswasignoff'
+          with: 
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            reaction-type: "eyes"
+            script: |
+              console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
   
   check-ghasignoff:
     name: 'Check comments for /command ghasignoff'
@@ -57,7 +57,7 @@ jobs:
           permission-level: admin
       - name: 'Act on command ghasignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+          echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
  
   check-socialsignoff:
     name: 'Check comments for /command socialsignoff'
