@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Check for command type'
-        if: ${{ github.event.issue.labels, 'review-completed' }}
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
+        # if: ${{ github.event.label.name }} == 'reiew-completed'
         id: command
         uses: xt0rted/slash-command-action@v1
         with:
@@ -34,7 +35,7 @@ jobs:
           echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} "
 
       - name: 'Check for command type'
-        if: ${{ github.event.issue.pull_request && github.event.issue.labels, 'review-completed' }}
+        if: ${{ github.event.issue.pull_request }} && contains(github.event.pull_request.labels.*.name, 'review-completed')
         id: command
         uses: xt0rted/slash-command-action@v1
         with:
@@ -49,7 +50,7 @@ jobs:
           echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
 
       - name: 'Check for command type'
-        if: ${{ github.event.issue.labels, 'review-completed' }}
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
         id: command
         uses: xt0rted/slash-command-action@v1
         with:
@@ -64,7 +65,7 @@ jobs:
           echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
       - name: 'Check for command type'
-        if: ${{ github.event.issue.labels, 'review-completed' }}
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
         id: command
         uses: xt0rted/slash-command-action@v1
         with:
@@ -79,7 +80,7 @@ jobs:
           echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
       - name: 'Check for command type'
-        if: ${{ github.event.issue.labels, 'review-completed' }}
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
         id: command
         uses: xt0rted/slash-command-action@v1
         with:
