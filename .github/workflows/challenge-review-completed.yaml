@@ -14,85 +14,101 @@ on:
   #   - 'teams/**/*.md'
 
 jobs:
-  check-comments:
-    name: 'Check comments for /command'
+  check-aswasignoff:
+    name: 'Check comments for /command aswasignoff'
     runs-on: ubuntu-latest
     steps:
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
         # if: ${{ github.event.label.name }} == 'reiew-completed'
-        id: command1
+        id: command
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command1: aswasignoff
+          command: aswasignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command'
         run: |
-          echo "The command was '${{ steps.command1.outputs.command-name }}' on PR #${{ github.event.issue.number }} "
-
+          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} "
+  
+  check-ghasignoff:
+    name: 'Check comments for /command ghasignoff'
+    runs-on: ubuntu-latest
+    steps:
       - name: 'Check for command type'
         if: ${{ github.event.issue.pull_request }} && contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command2
+        id: command
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command2: ghasignoff
+          command: ghasignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command ghasignoff'
         run: |
-          echo "The command was '${{ steps.command2.outputs.command-name }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
-
+          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+ 
+  check-socialsignoff:
+    name: 'Check comments for /command socialsignoff'
+    runs-on: ubuntu-latest
+    steps:
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command3
+        id: command
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command3: socialsignoff
+          command: socialsignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command socialsignoff'
         run: |
-          echo "The command was '${{ steps.command3.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
+  check-reposignoff:
+    name: 'Check comments for /command reposignoff'
+    runs-on: ubuntu-latest
+    steps:
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command4
+        id: command
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command4: reposignoff
+          command: reposignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command reposignoff'
         run: |
-          echo "The command was '${{ steps.command4.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
+  check-retrosignoff:
+    name: 'Check comments for /commandretrosignoff'
+    runs-on: ubuntu-latest
+    steps:
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command5
+        id: command
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command5: retrosignoff
+          command: retrosignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command retrosignoff'
         run: |
-          echo "The command was '${{ steps.command5.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
           
  # slash-commanding:
