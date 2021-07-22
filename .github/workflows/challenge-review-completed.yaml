@@ -21,78 +21,78 @@ jobs:
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
         # if: ${{ github.event.label.name }} == 'reiew-completed'
-        id: command
+        id: command1
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command: aswasignoff
+          command1: aswasignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} "
+          echo "The command was '${{ steps.command1.outputs.command-name }}' on PR #${{ github.event.issue.number }} "
 
       - name: 'Check for command type'
         if: ${{ github.event.issue.pull_request }} && contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command
+        id: command2
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command: ghasignoff
+          command2: ghasignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command ghasignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+          echo "The command was '${{ steps.command2.outputs.command-name }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
 
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command
+        id: command3
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command: socialsignoff
+          command3: socialsignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command socialsignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command3.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command
+        id: command4
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command: reposignoff
+          command4: reposignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command reposignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command4.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
       - name: 'Check for command type'
         if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-        id: command
+        id: command5
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          command: rtrosignoff
+          command5: retrosignoff
           reaction: "true"
           reaction-type: "eyes"
           allow-edits: "false"
           permission-level: admin
-      - name: 'Act on command retrosignff'
+      - name: 'Act on command retrosignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command5.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
 
           
  # slash-commanding:
