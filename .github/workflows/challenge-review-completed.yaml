@@ -53,7 +53,7 @@ jobs:
           id: command
           uses: xt0rted/slash-command-action@v1
           with:
-           repo-token: ${{ secrets.GITHUB_TOKEN }}
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
             command: ghasignoff
             reaction: "true"
             reaction-type: "+1"
