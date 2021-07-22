@@ -35,7 +35,7 @@ jobs:
           steps.command.outputs.aswasignoff =='aswasignoff'
         with: 
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          reaction-type: "eyes"
+          reaction-type: "hooray"
           script: |
             console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
   
@@ -44,14 +44,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Check for command type'
-        if: ${{ github.event.issue.pull_request }} && contains(github.event.pull_request.labels.*.name, 'review-completed')
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
         id: command
         uses: xt0rted/slash-command-action@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           command: ghasignoff
           reaction: "true"
-          reaction-type: "eyes"
+          reaction-type: "+1"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command ghasignoff'
@@ -70,12 +70,12 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           command: socialsignoff
           reaction: "true"
-          reaction-type: "eyes"
+          reaction-type: "heart"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command socialsignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
 
   check-reposignoff:
     name: 'Check comments for /command reposignoff'
@@ -94,7 +94,7 @@ jobs:
           permission-level: admin
       - name: 'Act on command reposignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
 
   check-retrosignoff:
     name: 'Check comments for /commandretrosignoff'
@@ -108,12 +108,12 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           command: retrosignoff
           reaction: "true"
-          reaction-type: "eyes"
+          reaction-type: "rocket"
           allow-edits: "false"
           permission-level: admin
       - name: 'Act on command retrosignoff'
         run: |
-          echo "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }}"
+          echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
 
           
  # slash-commanding:
