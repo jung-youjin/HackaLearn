@@ -29,7 +29,6 @@ jobs:
           reaction: "true"
           allow-edits: "false"
           permission-level: admin
-          
         - name: 'Act on command'
           uses: actions/github-script@v3
           if: |
