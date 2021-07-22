@@ -1,11 +1,13 @@
 name: On Challenge review-completed commented
 
 on:
-  pull_request:
-    types:
-    - labeled #ready_for_review]
-    paths:
-    - 'teams/**/*.md'
+  issue_comment:
+    types: [created]
+  # pull_request:
+  # types:
+  #  - labeled #ready_for_review]
+  #  paths:
+  #  - 'teams/**/*.md'
   # pull_request_review_comment:
   #   types: 
   #   - [created, deleted]
@@ -46,3 +48,20 @@ jobs:
           socialsignoff
           reposignoff
           retrosignoff
+  check-comments:
+    name: 'Check comments for /command'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: aswasignoff
+          reaction: "true"
+          reaction-type: "eyes"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command'
+        run: |
+          "The command was '${{ steps.command.outputs.command-name }}' triggered'"
