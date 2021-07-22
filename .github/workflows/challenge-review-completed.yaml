@@ -1,0 +1,130 @@
+name: On Challenge review-completed commented
+
+on:
+  issue_comment
+
+jobs:
+  check-aswasignoff:
+    name: 'Check comments for /command aswasignoff'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
+        # if: ${{ github.event.label.name }} == 'reiew-completed'
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: aswasignoff
+          reaction: "true"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command aswasignoff'
+        uses: actions/github-script@v3
+        if: |
+          steps.command.outputs.aswasignoff =='aswasignoff'
+        with: 
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          reaction-type: "hooray"
+          script: |
+            console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
+  
+  check-ghasignoff:
+    name: 'Check comments for /command ghasignoff'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: ghasignoff
+          reaction: "true"
+          reaction-type: "+1"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command ghasignoff'
+        if: |
+            steps.command.outputs.ghasignoff =='ghasignoff'
+        run: |
+          echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
+ 
+  check-socialsignoff:
+    name: 'Check comments for /command socialsignoff'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: socialsignoff
+          reaction: "true"
+          reaction-type: "heart"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command socialsignoff'
+        if: |
+            steps.command.outputs.socialsignoff =='socialsignoff'
+        run: |
+          echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
+
+  check-reposignoff:
+    name: 'Check comments for /command reposignoff'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: reposignoff
+          reaction: "true"
+          reaction-type: "eyes"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command reposignoff'
+        if: |
+            steps.command.outputs.reposignoff =='reposignoff'
+        run: |
+          echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
+
+  check-retrosignoff:
+    name: 'Check comments for /command retrosignoff'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check for command type'
+        if: contains(github.event.pull_request.labels.*.name, 'review-completed')
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: retrosignoff
+          reaction: "true"
+          reaction-type: "rocket"
+          allow-edits: "false"
+          permission-level: admin
+      - name: 'Act on command retrosignoff'
+        if: |
+            steps.command.outputs.retrosignoff =='retrosignoff'
+        run: |
+          echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
+
+          
+ # slash-commanding:
+ #   name: 'Update label to review-completed when slash command comment used'
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #   - uses: peter-evans/create-or-update-comment@v1
+ #     with:
+ #     - token: ${{ secrets.PAT }}
+ #     - reaction-token: ${{ secrets.PAT }}
+ #     - commands: |
+ #         aswasignoff
+ #         ghasignoff
+ #         socialsignoff
+ #         reposignoff
+ #         retrosignoff
