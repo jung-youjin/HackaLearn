@@ -29,15 +29,15 @@ jobs:
           reaction: "true"
           allow-edits: "false"
           permission-level: admin
-        - name: 'Act on command'
-          uses: actions/github-script@v3
-          if: |
-            steps.command.outputs.command-name =='aswasignoff'
-          with: 
-            repo-token: ${{ secrets.GITHUB_TOKEN }}
-            reaction-type: "eyes"
-            script: |
-              console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
+      - name: 'Act on command'
+        uses: actions/github-script@v3
+        if: |
+          steps.command.outputs.aswasignoff =='aswasignoff'
+        with: 
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          reaction-type: "eyes"
+          script: |
+            console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
   
   check-ghasignoff:
     name: 'Check comments for /command ghasignoff'
