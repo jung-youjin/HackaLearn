@@ -28,6 +28,8 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
+    
+    - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.aswasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
         const request = {
@@ -57,6 +59,8 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.ghasignoff =='ghasignoff'
+
+    - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
     
@@ -74,6 +78,8 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.socialsignoff =='socialsignoff'
+
+    - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
 
@@ -91,6 +97,8 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.reposignoff =='reposignoff'
+
+    - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
 
@@ -109,6 +117,8 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.retrosignoff =='retrosignoff'
+
+    - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
 
