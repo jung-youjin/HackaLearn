@@ -61,11 +61,9 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.ghasignoff
-
     - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
-
   check-label-socialsignoff:
     if : ${{ github.event.issue.label.name == 'review-completed' }}
     runs-on: ubuntu-latest  
@@ -84,12 +82,9 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.socialsignoff
-
     - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
-
-
   check-label-reposignoff:
     if : ${{ github.event.issue.label.name == 'review-completed' }}
     runs-on: ubuntu-latest
@@ -108,11 +103,9 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.reposignoff
-
     - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
-
   check-label-retrosignoff:
     if : ${{ github.event.issue.label.name == 'review-completed' }}
     runs-on: ubuntu-latest
@@ -131,22 +124,6 @@ jobs:
       uses: actions/github-script@v3
       if: |
         steps.command.outputs.retrosignoff
-
     - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.retrosignoff }}' on PR #${{ github.event.issue.number }}"
-
- # slash-commanding:
- #   name: 'Update label to review-completed when slash command comment used'
- #   runs-on: ubuntu-latest
- #   steps:
- #   - uses: peter-evans/create-or-update-comment@v1
- #     with:
- #     - token: ${{ secrets.PAT }}
- #     - reaction-token: ${{ secrets.PAT }}
- #     - commands: |
- #         aswasignoff
- #         ghasignoff
- #         socialsignoff
- #         reposignoff
- #         retrosignoff
