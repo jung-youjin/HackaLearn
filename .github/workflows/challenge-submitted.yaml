@@ -41,7 +41,7 @@ jobs:
             🔹 From. HackaLearn 운영진 일동 🔹
 
   auto-assigning:
-  name: 'Randomly auto select one assignee on submission'
+  name: 'Auto select one assignee on submission'
   runs-on: ubuntu-latest
   steps:
     - uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
