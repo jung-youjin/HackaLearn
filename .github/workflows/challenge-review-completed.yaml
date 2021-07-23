@@ -22,9 +22,7 @@ jobs:
     - name: 'Act on command aswasignoff'
       uses: actions/github-script@v3
       if: |
-        steps.command.outputs.aswasignoff  check-label-ghasignoff:
-    if : ${{ github.event.issue.label.name == 'review-completed' }}
-    runs-on: ubuntu-latest
+        steps.command.outputs.aswasignoff
       with: 
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
