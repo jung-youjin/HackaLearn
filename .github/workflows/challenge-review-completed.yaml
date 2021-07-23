@@ -4,7 +4,7 @@ on:
   issue_comment
 
 jobs:
-  check-label: 
+  check-label-aswasignoff: 
     # if: contains(github.event.pull_request.labels.*.name, 'review-completed')
     if : ${{ github.event.issue.label.name == 'review-completed' }}
     runs-on: ubuntu-latest
@@ -28,7 +28,6 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           console.log( "The command was '${{ steps.command.outputs.command-name }}' on PR #${{ github.event.issue.number }} ")
-    
     - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.aswasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
@@ -44,7 +43,10 @@ jobs:
         } catch (err) {
           core.setFailed(`Request failed with error ${err}`)
         }
-        
+  
+  check-label-ghasignoff:
+    if : ${{ github.event.issue.label.name == 'review-completed' }}
+    runs-on: ubuntu-latest
     - name: Check for command type
       id: command
       uses: xt0rted/slash-command-action@v1
@@ -63,7 +65,10 @@ jobs:
     - name: Run
       run: |
         echo "The command was '${{ steps.command.outputs.ghasignoff }}' on PR #${{ github.event.issue.number }} by @${{ github.event.issue_comment.user.login }}"
-    
+
+  check-label-socialsignoff:
+    if : ${{ github.event.issue.label.name == 'review-completed' }}
+    runs-on: ubuntu-latest  
     - name: Check for command type
       id: command
       uses: xt0rted/slash-command-action@v1
@@ -83,6 +88,10 @@ jobs:
       run: |
         echo "The command was '${{ steps.command.outputs.socialsignoff }}' on PR #${{ github.event.issue.number }}"
 
+
+  check-label-reposignoff:
+    if : ${{ github.event.issue.label.name == 'review-completed' }}
+    runs-on: ubuntu-latest
     - name: Check for command type
       id: command
       uses: xt0rted/slash-command-action@v1
@@ -102,7 +111,9 @@ jobs:
       run: |
         echo "The command was '${{ steps.command.outputs.reposignoff }}' on PR #${{ github.event.issue.number }}"
 
-
+  check-label-retrosignoff:
+    if : ${{ github.event.issue.label.name == 'review-completed' }}
+    runs-on: ubuntu-latest
     - name: Check for command type
       uses: xt0rted/slash-command-action@v1
       id: command
