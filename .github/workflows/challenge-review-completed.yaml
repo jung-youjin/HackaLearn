@@ -8,7 +8,6 @@ jobs:
     # if: contains(github.event.pull_request.labels.*.name, 'review-completed')
     if : ${{ github.event.issue.label.name == 'review-completed' }}
     runs-on: ubuntu-latest
-    name: Check command
     steps:
     - name: Check for command type
       id: command
