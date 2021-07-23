@@ -6,7 +6,7 @@ on:
 jobs:
   check-label-aswasignoff: 
     # if: contains(github.event.pull_request.labels.*.name, 'review-completed')
-    if : ${{ github.event.issue.label.name == 'review-completed' }}
+    # if : ${{ github.event.issue.label.name == 'review-completed' }}
     runs-on: ubuntu-latest
     steps:
     - name: Check for command type
@@ -22,7 +22,9 @@ jobs:
     - name: 'Act on command aswasignoff'
       uses: actions/github-script@v3
       if: |
-        steps.command.outputs.aswasignoff =='aswasignoff'
+        steps.command.outputs.aswasignoff  check-label-ghasignoff:
+    if : ${{ github.event.issue.label.name == 'review-completed' }}
+    runs-on: ubuntu-latest
       with: 
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
