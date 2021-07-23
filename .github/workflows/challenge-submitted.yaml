@@ -44,8 +44,8 @@ jobs:
   name: 'Randomly auto select one assignee on submission'
   runs-on: ubuntu-latest
   steps:
-    - uses: gerardabello/auto-assign@v1
+    - uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
       with:
-        github-token: "${{ secrets.GITHUB_TOKEN }}"
-        number-of-assignees: 1
-        assignee-pool: "${{ secrets.PR_ASSIGNEES }}"
+        # reviewers: "devrel-kr/hackathon"
+        reviewers: ${{ secrets.PR_REVIEWERS }}
+        token: ${{ secrets.GITHUB_TOKEN }}
