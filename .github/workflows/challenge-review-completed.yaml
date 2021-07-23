@@ -25,7 +25,7 @@ jobs:
         steps.command.outputs.aswasignoff
       with: 
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-      script: |
+        script: |
            
     - name: Run
       run: |
@@ -60,7 +60,7 @@ jobs:
     - name: Act on command ghasignoff
       uses: actions/github-script@v3
       if: |
-        steps.command.outputs.ghasignoff =='ghasignoff'
+        steps.command.outputs.ghasignoff
 
     - name: Run
       run: |
@@ -83,7 +83,7 @@ jobs:
     - name: Act on command socialsignoff
       uses: actions/github-script@v3
       if: |
-        steps.command.outputs.socialsignoff =='socialsignoff'
+        steps.command.outputs.socialsignoff
 
     - name: Run
       run: |
@@ -107,7 +107,7 @@ jobs:
     - name: Act on command reposignoff
       uses: actions/github-script@v3
       if: |
-        steps.command.outputs.reposignoff =='reposignoff'
+        steps.command.outputs.reposignoff
 
     - name: Run
       run: |
@@ -130,7 +130,7 @@ jobs:
     - name: Act on command retrosignoff
       uses: actions/github-script@v3
       if: |
-        steps.command.outputs.retrosignoff =='retrosignoff'
+        steps.command.outputs.retrosignoff
 
     - name: Run
       run: |
